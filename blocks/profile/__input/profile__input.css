@@ -4,7 +4,7 @@
   grid-template-areas: "input";
 }
 
-@media screen and (max-width: 700px) {
+@media screen and (max-width: 720px) {
   .profile__input {
     margin: 26px 0 36px;
     max-width: 282px;
