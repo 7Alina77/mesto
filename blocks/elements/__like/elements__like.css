@@ -12,5 +12,5 @@
 }
 
 .elements__like_active {
-  background-color: #000;
+  background: url(../../../images/like-active.svg);
 }

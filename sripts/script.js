@@ -21,7 +21,7 @@ popupInputs[0].value = profileName.textContent;
 popupInputs[1].value = profileAbout.textContent;
 
 const saveBtn = popupElement.querySelector('.popup__save');
-saveBtn.addEventListener('click', function(evt) {
+saveBtn.addEventListener('submit', function(evt) {
     evt.preventDefault();
     profileName.textContent = popupInputs[0].value;
     profileAbout.textContent = popupInputs[1].value;
