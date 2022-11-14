@@ -14,7 +14,6 @@
   <div class="page">
     <header class="header">
       <img class="header__logo" alt="лого" src="./images/mesto.svg">
-      <div class="header__line"></div>
     </header>
     <main class="main">
       <section class="profile">
@@ -22,74 +21,70 @@
         <div class="profile__input">
           <div class="profile__info">
             <h1 class="profile__name">Жак-Ив Кусто</h1>
-            <button class="profile__edit-button"></button>
+            <button class="profile__edit-button" type="button"></button>
           </div>
           <p class="profile__about">Исследователь океана</p>
         </div>
-        <button class="profile__add-button profile__add-button_add"></button>
+        <button class="profile__add-button" type="submit"></button>
       </section>
       <section class="elements">
-        <div class="elements__item">
-          <img class="elements__image" alt="фото из элемента" src="./images/karachaevsk.jpg">
-          <form class="elements__group">
+        <article class="elements__item">
+          <img class="elements__image" alt="пейзаж карачаевск" src="./images/karachaevsk.jpg">
+          <div class="elements__group">
             <p class="elements__title">Карачаевск</p>
             <button type="submit" class="elements__like"></button>
-          </form>
-        </div>
-        <div class="elements__item">
-          <img class="elements__image" alt="фото из элемента" src="./images/elbrus.jpg">
-          <form class="elements__group">
+          </div>
+        </article>
+        <article class="elements__item">
+          <img class="elements__image" alt="фото горы Эльбрус" src="./images/elbrus.jpg">
+          <div class="elements__group">
             <p class="elements__title">Гора Эльбрус</p>
             <button type="submit" class="elements__like"></button>
-          </form>
-        </div>
-        <div class="elements__item">
-          <img class="elements__image" alt="фото из элемента" src="./images/dombay.jpg">
-          <form class="elements__group">
+          </div>
+        </article>
+        <article class="elements__item">
+          <img class="elements__image" alt="Домбай горы" src="./images/dombay.jpg">
+          <div class="elements__group">
             <p class="elements__title">Домбай</p>
             <button type="submit" class="elements__like"></button>
-          </form>
-        </div>
-        <div class="elements__item">
-          <img class="elements__image" alt="фото из элемента" src="./images/elbrus.jpg">
-          <form class="elements__group">
+          </div>
+        </article>
+        <article class="elements__item">
+          <img class="elements__image" alt="фото горы Эльбрус" src="./images/elbrus.jpg">
+          <div class="elements__group">
             <p class="elements__title">Гора Эльбрус</p>
             <button type="submit" class="elements__like"></button>
-          </form>
-        </div>
-        <div class="elements__item">
-          <img class="elements__image" alt="фото из элемента" src="./images/dombay.jpg">
-          <form class="elements__group">
+          </div>
+        </article>
+        <article class="elements__item">
+          <img class="elements__image" alt="Домбай горы" src="./images/dombay.jpg">
+          <div class="elements__group">
             <p class="elements__title">Домбай</p>
             <button type="submit" class="elements__like"></button>
-          </form>
-        </div>
-        <div class="elements__item">
-          <img class="elements__image" alt="фото из элемента" src="./images/karachaevsk.jpg">
-          <form class="elements__group">
+          </div>
+        </article>
+        <article class="elements__item">
+          <img class="elements__image" alt="пейзаж Карачаево-Черкессия" src="./images/karachaevsk.jpg">
+          <div class="elements__group">
             <p class="elements__title">Карачаево-Черкессия</p>
             <button type="submit" class="elements__like"></button>
-          </form>
-        </div>
+          </div>
+        </article>
       </section>
     </main>
     <footer class="footer">
       <p class="footer__text">&copy; 2022 Mesto Russia</p>
     </footer>
     <section class="popup">
-      <div class="popup__background">
-        <div class="popup__container">
-          <div class="popup__width">
-            <h2 class="popup__title">Редактировать профиль</h2>
-            <input type="text" class="popup__name popup__input" placeholder="Имя">
-            <input type="text" class="popup__about popup__input" placeholder="О себе">
-            <button class="popup__save" type="submit">Сохранить</button>          
-          </div>
-          <button class="popup__close"></button>
-        </div>
-      </div>
+      <form class="popup__container">
+        <h2 class="popup__title">Редактировать профиль</h2>
+        <input type="text" class="popup__input popup__input_name" placeholder="Имя">
+        <input type="text" class="popup__input popup__input_about" placeholder="О себе">
+        <button class="popup__save" type="submit">Сохранить</button>
+        <button class="popup__close" type="button"></button>
+      </form>
     </section>
   </div>
-  <script src="./sripts/script.js"></script>
+  <script src="./sripts/scripts.js"></script>
 </body>
 </html>
