@@ -1,23 +1,22 @@
 const popupElement = document.querySelector('.popup');
-const popupFormContainer = popupElement.querySelector('.popup__container');
+const popupFormContainer = popupElement.querySelector('.popup__form');
 const popupCloseBtn = popupElement.querySelector('.popup__close');
 let profileElement = document.querySelector('.profile');
 const popupOpenBtn = profileElement.querySelector('.profile__edit-button');
+let popupName = popupElement.querySelector('.popup__input_type_name');
+let popupAbout = popupElement.querySelector('.popup__input_type_about');
+let profileName = profileElement.querySelector('.profile__name');
+let profileAbout = profileElement.querySelector('.profile__about');
 
 const openPopup = function() {
-  popupElement.classList.add('popup__opened');
+  popupName.value = profileName.textContent;
+  popupAbout.value = profileAbout.textContent;
+  popupElement.classList.add('popup_opened');
 }
 
 const closePopup = function() {
-  popupElement.classList.remove('popup__opened');
+  popupElement.classList.remove('popup_opened');
 }
-
-let popupName = popupElement.querySelector('.popup__input_name');
-let popupAbout = popupElement.querySelector('.popup__input_about');
-let profileName = profileElement.querySelector('.profile__name');
-let profileAbout = profileElement.querySelector('.profile__about');
-popupName.value = profileName.textContent;
-popupAbout.value = profileAbout.textContent;
 
 let submitPopupFormContainer = function(evt) {
     evt.preventDefault();
