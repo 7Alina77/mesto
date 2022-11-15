@@ -3,10 +3,9 @@
   width: 430px;
   height: 330px;
   background-color: #fff;
-  position: absolute;
+  position: relative;
   border-radius: 10px;
-  display: flex;
-  flex-direction: column;
+  box-sizing: border-box;
 }
 
 @media screen and (max-width: 700px) {

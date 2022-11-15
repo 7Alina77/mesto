@@ -1,14 +1,28 @@
 .profile__input {
-  margin: 0 0 0 30px;
+  display: grid;
+  margin: 10px 0 0 30px;
   max-width: 336px;
-  grid-template-areas: "input";
+  grid-area: "input";
+  grid-template-columns: 1fr;
+  grid-template-rows: 1fr 1fr;
+  grid-template-areas: 
+  "name edit-button"
+  "about about";
   align-items: baseline;
 }
 
 @media screen and (max-width: 700px) {
   .profile__input {
-    margin: 26px 0 36px;
     max-width: 282px;
-    text-align: center;
+    margin-top: 26px;
+    margin-bottom: 28px;
+    display: grid;
+    justify-items: center;
+    box-sizing: border-box;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr 1fr;
+    grid-template-areas: 
+    "name edit-button"
+    "about about";
   }
 }

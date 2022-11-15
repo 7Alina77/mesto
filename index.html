@@ -19,13 +19,11 @@
       <section class="profile">
         <img class="profile__avatar" alt="аватарка" src="./images/avatar.jpg">
         <div class="profile__input">
-          <div class="profile__info">
-            <h1 class="profile__name">Жак-Ив Кусто</h1>
-            <button class="profile__edit-button" type="button"></button>
-          </div>
+          <h1 class="profile__name">Жак-Ив Кусто</h1>
+          <button class="profile__edit-button" type="button"></button>
           <p class="profile__about">Исследователь океана</p>
         </div>
-        <button class="profile__add-button" type="submit"></button>
+        <button class="profile__add-button" type="button"></button>
       </section>
       <section class="elements">
         <article class="elements__item">
@@ -76,15 +74,17 @@
       <p class="footer__text">&copy; 2022 Mesto Russia</p>
     </footer>
     <section class="popup">
-      <form class="popup__container">
+      <div class="popup__container">
         <h2 class="popup__title">Редактировать профиль</h2>
-        <input type="text" class="popup__input popup__input_name" placeholder="Имя">
-        <input type="text" class="popup__input popup__input_about" placeholder="О себе">
-        <button class="popup__save" type="submit">Сохранить</button>
+        <form name="popup" class="popup__form">
+          <input type="text" name="name" class="popup__input popup__input_type_name" placeholder="Имя">
+          <input type="text" name="about" class="popup__input popup__input_type_about" placeholder="О себе">
+          <button class="popup__save" type="submit">Сохранить</button>
+        </form>
         <button class="popup__close" type="button"></button>
-      </form>
+      </div>
     </section>
   </div>
-  <script src="./sripts/scripts.js"></script>
+  <script src="./sсripts/scripts.js"></script>
 </body>
 </html>

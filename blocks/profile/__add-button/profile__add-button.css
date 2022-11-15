@@ -9,6 +9,7 @@
   cursor: pointer;
   grid-template-areas: "add-button";
   box-sizing: border-box;
+  border-radius: 2px;
 }
 
 .profile__add-button:hover {
