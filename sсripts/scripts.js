@@ -9,6 +9,8 @@ let profileName = profileElement.querySelector('.profile__name');
 let profileAbout = profileElement.querySelector('.profile__about');
 const buttonsLike = document.querySelectorAll('.elements__like');
 const buttonsLikeArray = Array.from(buttonsLike);
+const popupAddElement = document.querySelector('.popup__add-element');
+const popupAddElementOpen = document.querySelector('.profile__add-button');
 
 const openPopup = function() {
   popupName.value = profileName.textContent;
@@ -18,6 +20,14 @@ const openPopup = function() {
 
 const closePopup = function() {
   popupElement.classList.remove('popup_opened');
+}
+
+const openPopupAddElement = function() {
+  popupAddElement.classList.add('popup_opened');
+}
+
+const closePopupAddElement = function() {
+  popupAddElement.classList.remove('popup_opened');
 }
 
 let submitPopupFormContainer = function(evt) {
@@ -37,3 +47,5 @@ for(let i=0; i < buttonsLikeArray.length; i++) {
 popupOpenBtn.addEventListener('click', openPopup);
 popupCloseBtn.addEventListener('click', closePopup);
 popupFormContainer.addEventListener('submit',submitPopupFormContainer);
+popupAddElementOpen.addEventListener('click', openPopupAddElement);
+popupCloseBtn.addEventListener('click', closePopupAddElement);
