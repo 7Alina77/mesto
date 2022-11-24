@@ -26,60 +26,22 @@
         <button class="profile__add-button" type="button"></button>
       </section>
       <section class="elements">
-        <article class="elements__item">
-          <button type="button" class="elements__trash"></button>
-          <img class="elements__image" alt="пейзаж карачаевск" src="./images/karachaevsk.jpg">
-          <div class="elements__group">
-            <p class="elements__title">Карачаевск</p>
-            <button type="submit" class="elements__like"></button>
-          </div>
-        </article>
-        <article class="elements__item">
-          <button type="button" class="elements__trash"></button>
-          <img class="elements__image" alt="фото горы Эльбрус" src="./images/elbrus.jpg">
-          <div class="elements__group">
-            <p class="elements__title">Гора Эльбрус</p>
-            <button type="submit" class="elements__like"></button>
-          </div>
-        </article>
-        <article class="elements__item">
-          <button type="button" class="elements__trash"></button>
-          <img class="elements__image" alt="Домбай горы" src="./images/dombay.jpg">
-          <div class="elements__group">
-            <p class="elements__title">Домбай</p>
-            <button type="submit" class="elements__like"></button>
-          </div>
-        </article>
-        <article class="elements__item">
-          <button type="button" class="elements__trash"></button>
-          <img class="elements__image" alt="фото горы Эльбрус" src="./images/elbrus.jpg">
-          <div class="elements__group">
-            <p class="elements__title">Гора Эльбрус</p>
-            <button type="submit" class="elements__like"></button>
-          </div>
-        </article>
-        <article class="elements__item">
-          <button type="button" class="elements__trash"></button>
-          <img class="elements__image" alt="Домбай горы" src="./images/dombay.jpg">
-          <div class="elements__group">
-            <p class="elements__title">Домбай</p>
-            <button type="submit" class="elements__like"></button>
-          </div>
-        </article>
-        <article class="elements__item">
-          <button type="button" class="elements__trash"></button>
-          <img class="elements__image" alt="пейзаж Карачаево-Черкессия" src="./images/karachaevsk.jpg">
-          <div class="elements__group">
-            <p class="elements__title">Карачаево-Черкессия</p>
-            <button type="submit" class="elements__like"></button>
-          </div>
-        </article>
+        <template id="elements__item">
+          <article class="elements__item">
+            <button type="button" class="elements__trash"></button>
+            <img class="elements__image" alt="" src="">
+            <div class="elements__group">
+              <p class="elements__title"></p>
+              <button type="submit" class="elements__like"></button>
+            </div>
+          </article>
+        </template>
       </section>
     </main>
     <footer class="footer">
       <p class="footer__text">&copy; 2022 Mesto Russia</p>
     </footer>
-    <section class="popup">
+    <section class="popup popup__edit">
       <div class="popup__container">
         <h2 class="popup__title">Редактировать профиль</h2>
         <form name="popup" class="popup__form">
@@ -103,5 +65,6 @@
     </section>
   </div>
   <script src="./sсripts/scripts.js"></script>
+  <script src="./sсripts/tests.js"></script>
 </body>
 </html>
