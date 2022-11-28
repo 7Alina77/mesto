@@ -44,7 +44,7 @@
     <section class="popup popup__edit">
       <div class="popup__container">
         <h2 class="popup__title">Редактировать профиль</h2>
-        <form name="popup" class="popup__form">
+        <form name="popup" class="popup__form popup__form-edit">
           <input type="text" name="name" class="popup__input popup__input_type_name" placeholder="Имя">
           <input type="text" name="about" class="popup__input popup__input_type_about" placeholder="О себе">
           <button class="popup__save" type="submit">Сохранить</button>
@@ -55,11 +55,20 @@
     <section class="popup popup__add-element">
       <div class="popup__container">
         <h2 class="popup__title">Новое место</h2>
-        <form name="popup" class="popup__form">
+        <form name="popup" class="popup__form popup__form-add">
           <input type="text" name="place" class="popup__input popup__input_type_place" placeholder="Название">
           <input type="text" name="link" class="popup__input popup__input_type_link" placeholder="Ссылка на картинку">
-          <button class="popup__save" type="submit">Создать</button>
+          <button class="popup__save popup__add" type="submit">Создать</button>
         </form>
+        <button class="popup__close" type="button"></button>
+      </div>
+    </section>
+    <section class="popup popup__image">
+      <div class="popup__relative">
+        <figure class="figure">
+          <img class="popup__img" alt="" src="">
+          <figcaption class="popup__img-title"></figcaption>
+        </figure>
         <button class="popup__close" type="button"></button>
       </div>
     </section>

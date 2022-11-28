@@ -45,4 +45,28 @@ popupOpenBtn.addEventListener('click', function() {
   openPopup(popupElement);
 });
 
+popupElements.forEach(function(item) {
+  let submitPopupFormContainer = function(evt) {
+    evt.preventDefault();
+  if (item.querySelector('.popup__edit')) {
+    profileName.textContent = popupName.value;
+    profileAbout.textContent = popupAbout.value;
+  } else if (item.querySelector('popup__add-element')) {
+    popupPlace.value = initialCards.name;
+    popupLink.value = initialCards.link;
+  } else {
+    closePopup(item);
+  } closePopup(item);
+};});
+
+
+popupElements.forEach(function(item) {
+  const popupFormContainer = item.querySelector('.popup__form');
+  const popupSubmitBtn = item.querySelector('.popup__save');
+  popupSubmitBtn.addEventListener('click', function() {
+      popupFormContainer.addEventListener('submit', function() {
+        submitPopupFormContainer()});
+  });
+});
+
 popupFormContainer.addEventListener('submit',submitPopupFormContainer);**/
