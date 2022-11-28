@@ -26,57 +26,25 @@
         <button class="profile__add-button" type="button"></button>
       </section>
       <section class="elements">
-        <article class="elements__item">
-          <img class="elements__image" alt="пейзаж карачаевск" src="./images/karachaevsk.jpg">
-          <div class="elements__group">
-            <p class="elements__title">Карачаевск</p>
-            <button type="submit" class="elements__like"></button>
-          </div>
-        </article>
-        <article class="elements__item">
-          <img class="elements__image" alt="фото горы Эльбрус" src="./images/elbrus.jpg">
-          <div class="elements__group">
-            <p class="elements__title">Гора Эльбрус</p>
-            <button type="submit" class="elements__like"></button>
-          </div>
-        </article>
-        <article class="elements__item">
-          <img class="elements__image" alt="Домбай горы" src="./images/dombay.jpg">
-          <div class="elements__group">
-            <p class="elements__title">Домбай</p>
-            <button type="submit" class="elements__like"></button>
-          </div>
-        </article>
-        <article class="elements__item">
-          <img class="elements__image" alt="фото горы Эльбрус" src="./images/elbrus.jpg">
-          <div class="elements__group">
-            <p class="elements__title">Гора Эльбрус</p>
-            <button type="submit" class="elements__like"></button>
-          </div>
-        </article>
-        <article class="elements__item">
-          <img class="elements__image" alt="Домбай горы" src="./images/dombay.jpg">
-          <div class="elements__group">
-            <p class="elements__title">Домбай</p>
-            <button type="submit" class="elements__like"></button>
-          </div>
-        </article>
-        <article class="elements__item">
-          <img class="elements__image" alt="пейзаж Карачаево-Черкессия" src="./images/karachaevsk.jpg">
-          <div class="elements__group">
-            <p class="elements__title">Карачаево-Черкессия</p>
-            <button type="submit" class="elements__like"></button>
-          </div>
-        </article>
+        <template id="elements__item">
+          <article class="elements__item">
+            <button type="button" class="elements__trash"></button>
+            <img class="elements__image" alt="" src="">
+            <div class="elements__group">
+              <p class="elements__title"></p>
+              <button type="submit" class="elements__like"></button>
+            </div>
+          </article>
+        </template>
       </section>
     </main>
     <footer class="footer">
       <p class="footer__text">&copy; 2022 Mesto Russia</p>
     </footer>
-    <section class="popup">
+    <section class="popup popup__edit">
       <div class="popup__container">
         <h2 class="popup__title">Редактировать профиль</h2>
-        <form name="popup" class="popup__form">
+        <form name="popup" class="popup__form popup__form-edit">
           <input type="text" name="name" class="popup__input popup__input_type_name" placeholder="Имя">
           <input type="text" name="about" class="popup__input popup__input_type_about" placeholder="О себе">
           <button class="popup__save" type="submit">Сохранить</button>
@@ -84,7 +52,28 @@
         <button class="popup__close" type="button"></button>
       </div>
     </section>
+    <section class="popup popup__add-element">
+      <div class="popup__container">
+        <h2 class="popup__title">Новое место</h2>
+        <form name="popup" class="popup__form popup__form-add">
+          <input type="text" name="place" class="popup__input popup__input_type_place" placeholder="Название">
+          <input type="text" name="link" class="popup__input popup__input_type_link" placeholder="Ссылка на картинку">
+          <button class="popup__save popup__add" type="submit">Создать</button>
+        </form>
+        <button class="popup__close" type="button"></button>
+      </div>
+    </section>
+    <section class="popup popup__image">
+      <div class="popup__relative">
+        <figure class="figure">
+          <img class="popup__img" alt="" src="">
+          <figcaption class="popup__img-title"></figcaption>
+        </figure>
+        <button class="popup__close" type="button"></button>
+      </div>
+    </section>
   </div>
   <script src="./sсripts/scripts.js"></script>
+  <script src="./sсripts/tests.js"></script>
 </body>
 </html>
