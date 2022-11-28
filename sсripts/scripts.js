@@ -2,9 +2,9 @@ import initialCards from './cards.js';
 
 const cardsElements = document.querySelector('.elements');
 let profileElement = document.querySelector('.profile');
-const popupEditElement = document.querySelector('.popup__edit');
-const popupAddElement = document.querySelector('.popup__add-element');
-const popupImageElement = document.querySelector('.popup__image');
+const popupEditElement = document.querySelector('.popup_edit');
+const popupAddElement = document.querySelector('.popup_add-element');
+const popupImageElement = document.querySelector('.popup_image');
 const popupImageImg = popupImageElement.querySelector('.popup__img');
 const popupImageTitle = popupImageElement.querySelector('.popup__img-title');
 const popupFormContainer = popupEditElement.querySelector('.popup__form');
