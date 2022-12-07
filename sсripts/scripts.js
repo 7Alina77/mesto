@@ -67,16 +67,25 @@ initialCards.forEach(function(item) {
 
 const openPopup = function(popup) {
   popup.classList.add('popup_opened');
+  popup.addEventListener('keydown', closePopupByEsc);
 };
 
 const closePopup = function(popup) {
   popup.classList.remove('popup_opened');
+  popup.removeEventListener('keydown', closePopupByEsc);
 };
 
-popupElements.forEach(function(item) {
-  const popupCloseBtn = item.querySelector('.popup__close');
+const closePopupByEsc = function(evt) {
+  if(evt.key === 'Escape') {
+    closePopup(popup);
+  };
+};
+
+popupElements.forEach(function(popup) {
+  const popupCloseBtn = popup.querySelector('.popup__close');
   popupCloseBtn.addEventListener('click', function() {
-    closePopup(item)});
+    closePopup(popup)
+  });
 });
 
 popupEditOpenBtn.addEventListener('click', function() {
@@ -90,14 +99,14 @@ popupAddOpenBtn.addEventListener('click', function() {
   openPopup(popupAddElement);
 });
 
-const handlesubmitEditForm = function(evt) {
+const handleSubmitEditForm = function(evt) {
   evt.preventDefault();
   profileName.textContent = popupName.value;
   profileAbout.textContent = popupAbout.value;
   closePopup(popupEditElement);
 };
 
-const handlesubmitAddForm = function(evt) {
+const handleSubmitAddForm = function(evt) {
   evt.preventDefault();
   const cardAdd = {
     name: popupPlace.value,
@@ -105,7 +114,16 @@ const handlesubmitAddForm = function(evt) {
   };
   cardPrepend(cardAdd);
   closePopup(popupAddElement);
-}
+};
 
-popupEditForm.addEventListener('submit', handlesubmitEditForm);
-popupAddForm.addEventListener('submit', handlesubmitAddForm);
+popupElements.forEach(function(popupElement) {
+  const closePopupByClickOnOverlay = function(evt) {
+    if (evt.target === evt.currentTarget) {
+      closePopup(popupElement);
+    };
+  };
+  popupElement.addEventListener('click', closePopupByClickOnOverlay);
+});
+
+popupEditForm.addEventListener('submit', handleSubmitEditForm);
+popupAddForm.addEventListener('submit', handleSubmitAddForm);
