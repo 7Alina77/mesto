@@ -67,16 +67,18 @@ initialCards.forEach(function(item) {
 
 const openPopup = function(popup) {
   popup.classList.add('popup_opened');
-  popup.addEventListener('keydown', closePopupByEsc);
+  document.addEventListener('keydown', closePopupByEsc);
+  resetError(popup);
 };
 
 const closePopup = function(popup) {
   popup.classList.remove('popup_opened');
-  popup.removeEventListener('keydown', closePopupByEsc);
+  document.removeEventListener('keydown', closePopupByEsc);
 };
 
-const closePopupByEsc = function(evt) {
+const closePopupByEsc = (evt) => {
   if(evt.key === 'Escape') {
+    const popup = document.querySelector('.popup_opened');
     closePopup(popup);
   };
 };
