@@ -7,7 +7,6 @@ const popupAddElement = document.querySelector('.popup_add-element');
 const popupImageElement = document.querySelector('.popup_image');
 const popupImageImg = popupImageElement.querySelector('.popup__img');
 const popupImageTitle = popupImageElement.querySelector('.popup__img-title');
-const popupFormContainer = popupEditElement.querySelector('.popup__form');
 const popupAddOpenBtn = document.querySelector('.profile__add-button');
 const popupEditOpenBtn = profileElement.querySelector('.profile__edit-button');
 const popupName = popupEditElement.querySelector('.popup__input_type_name');
@@ -68,7 +67,6 @@ initialCards.forEach(function(item) {
 const openPopup = function(popup) {
   popup.classList.add('popup_opened');
   document.addEventListener('keydown', closePopupByEsc);
-  resetError(popup);
 };
 
 const closePopup = function(popup) {
