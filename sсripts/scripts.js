@@ -99,6 +99,7 @@ popupAddOpenBtn.addEventListener('click', function() {
   openPopup(popupAddElement);
   const resetBtn = popupAddElement.querySelector('.popup__save');
   resetBtn.classList.add('popup__save_disabled');
+  resetBtn.setAttribute('disabled', 'disabled');
 });
 
 const handleSubmitEditForm = function(evt) {
