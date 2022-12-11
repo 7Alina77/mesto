@@ -30,7 +30,7 @@ const createTemplate = function(card) {
   cardImg.src = card.link;
   cardImg.alt = card.link;
   cardTitle.textContent = card.name;
-  const popupImageOpen = function() {
+  const openPopupImage = function() {
     openPopup(popupImageElement);
     popupImageImg.src = card.link;
     popupImageTitle.textContent = card.name;
@@ -38,7 +38,7 @@ const createTemplate = function(card) {
   };
   likeBtn.addEventListener('click', toggleLike);
   trashBtn.addEventListener('click', deleteCard);
-  cardImg.addEventListener('click', popupImageOpen);
+  cardImg.addEventListener('click', openPopupImage);
   return cardElement;
 };
 
@@ -97,6 +97,8 @@ popupEditOpenBtn.addEventListener('click', function() {
 popupAddOpenBtn.addEventListener('click', function() {
   popupAddForm.reset();
   openPopup(popupAddElement);
+  const resetBtn = popupAddElement.querySelector('.popup__save');
+  resetBtn.classList.add('popup__save_disabled');
 });
 
 const handleSubmitEditForm = function(evt) {
