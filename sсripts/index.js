@@ -1,4 +1,13 @@
-const cardsElement = document.querySelector('.elements');
+import {initialCards} from './cards.js';
+import {cardsElement, Card} from "./card.js";
+import {FormValidator} from './FormValidator.js';
+
+initialCards.forEach((item) => {
+  const card = new Card(item.name, item.link);
+  const cardElement = card.generateCard();
+  cardsElement.prepend(cardElement);
+});
+
 const profileElement = document.querySelector('.profile');
 const popupEditElement = document.querySelector('.popup_edit');
 const popupAddElement = document.querySelector('.popup_add-element');
@@ -16,50 +25,7 @@ const popupLink = popupAddElement.querySelector('.popup__input_type_link');
 const popupEditForm = popupEditElement.querySelector('.popup__form-edit');
 const popupAddForm = popupAddElement.querySelector('.popup__form-add');
 const popupElements = document.querySelectorAll('.popup');
-/**const cardsTemplate = document.querySelector('#elements__item').content;**/
 
-/**const createTemplate = function(card) {
-  const cardElement = cardsTemplate.querySelector('.elements__item').cloneNode(true);
-  const likeBtn = cardElement.querySelector('.elements__like');
-  const trashBtn = cardElement.querySelector('.elements__trash');
-  const cardImg = cardElement.querySelector('.elements__image');
-  const cardTitle = cardElement.querySelector('.elements__title');
-  cardImg.src = card.link;
-  cardImg.alt = card.link;
-  cardTitle.textContent = card.name;
-  const openPopupImage = function() {
-    openPopup(popupImageElement);
-    popupImageImg.src = card.link;
-    popupImageTitle.textContent = card.name;
-    popupImageImg.alt = card.name;
-  };
-  likeBtn.addEventListener('click', toggleLike);
-  trashBtn.addEventListener('click', deleteCard);
-  cardImg.addEventListener('click', openPopupImage);
-  return cardElement;
-};
-
-const toggleLike = function(evt) {
-  evt.target.classList.toggle('elements__like_active');
-};
-
-const deleteCard = function(evt) {
-  evt.target.closest('.elements__item').remove();
-};
-
-const cardAppend = function(item) {
-  const card = createTemplate(item);
-  cardsElement.append(card);
-};
-
-const cardPrepend = function(item) {
-  const card = createTemplate(item);
-  cardsElement.prepend(card);
-};
-
-initialCards.forEach(function(item) {
-  cardAppend(item);
-});**/
 
 const openPopup = function(popup) {
   popup.classList.add('popup_opened');
