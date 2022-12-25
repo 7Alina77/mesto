@@ -1,4 +1,5 @@
-const cardsElement = document.querySelector('.elements');
+import {openPopup} from './index.js';
+import {popupImageElement, popupImageImg, popupImageTitle} from './index.js';
 
 class Card {
   constructor(name,link) {
@@ -24,6 +25,12 @@ class Card {
     return this._element;
   }
 
+  _handleOpenPopup() {
+    openPopup(popupImageElement);
+    popupImageImg.src = this._img;
+    popupImageTitle.textContent = this._title;
+  }
+
   _toggleLIke() {
     this._element.querySelector('.elements__like').classList.toggle('elements__like_active');
   }
@@ -39,8 +46,12 @@ class Card {
 
     this._element.querySelector('.elements__trash').addEventListener('click', () => {
       this._deleteCard();
-    })
+    });
+
+    this._element.querySelector('.elements__image').addEventListener('click', () => {
+      this._handleOpenPopup();
+    });
   }
 }
 
-export {cardsElement, Card};
+export {Card};
