@@ -57,14 +57,6 @@ class FormValidator {
     }
   }
 
-  _resetInputError() {
-    this._inputList.forEach((inputElem) => {
-      if(inputElem.classList.contains(this._inputErrorClass)) {
-        this._hideInputError(inputElem);
-      }
-    })
-  }
-
   _setEventListeners() {
     this.toggleBtnState();
     this._inputList.forEach((inputElem, errorMessage) => {

@@ -29,6 +29,7 @@ class Card {
     openPopup(popupImageElement);
     popupImageImg.src = this._img;
     popupImageTitle.textContent = this._title;
+    popupImageImg.alt = this._title;
   }
 
   _toggleLIke() {
