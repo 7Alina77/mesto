@@ -65,7 +65,6 @@ const closePopupByEsc = (evt) => {
 
 popupEditOpenBtn.addEventListener('click', function() {
   editFormValidation.resetValidation();
-  editFormValidation.toggleBtnState();
   popupName.value = profileName.textContent;
   popupAbout.value = profileAbout.textContent;
   openPopup(popupEditElement);
@@ -73,8 +72,8 @@ popupEditOpenBtn.addEventListener('click', function() {
 
 popupAddOpenBtn.addEventListener('click', function() {
   addFormvalidation.resetValidation();
-  addFormvalidation.toggleBtnState();
   popupAddForm.reset();
+  addFormvalidation.toggleBtnState();
   openPopup(popupAddElement);
 });
 
