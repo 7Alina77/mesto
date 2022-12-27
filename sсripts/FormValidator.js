@@ -8,14 +8,15 @@ const data = {
 };
 
 class FormValidator {
-  constructor(data, formSelector) {
+  constructor(data, form) {
     this._inputSelector = data.inputSelector;
     this._submitButtonSelector = data.submitButtonSelector;
     this._inactiveButtonClass = data.inactiveButtonClass;
     this._inputErrorClass = data.inputErrorClass;
     this._errorClass = data.errorClass;
-    this._formSelector = formSelector;
-    this._inputList = Array.from(this._formSelector.querySelectorAll(this._inputSelector));
+    this._form = form;
+    this._btnElem = this._form.querySelector(this._submitButtonSelector);
+    this._inputList = Array.from(this._form.querySelectorAll(this._inputSelector));
   }
 
   _hasInvalidInput() {
@@ -24,26 +25,32 @@ class FormValidator {
     });
   }
 
+  resetValidation() {
+    this.toggleBtnState();
+    this._inputList.forEach((inputElem) => {
+      this._hideInputError(inputElem)
+    });
+  }
+
   toggleBtnState() {
-    const btnElem = this._formSelector.querySelector(this._submitButtonSelector);
     if(this._hasInvalidInput(this._inputList)) {
-      btnElem.classList.add(this._inactiveButtonClass);
-      btnElem.setAttribute('disabled', 'disabled');
+      this._btnElem.classList.add(this._inactiveButtonClass);
+      this._btnElem.setAttribute('disabled', 'disabled');
     } else {
-      btnElem.classList.remove(this._inactiveButtonClass);
-      btnElem.removeAttribute('disabled', 'disabled');
+      this._btnElem.classList.remove(this._inactiveButtonClass);
+      this._btnElem.removeAttribute('disabled', 'disabled');
     }
   }
 
   _showInputError(inputElem, errorMessage) {
-    const errorElem = this._formSelector.querySelector(`.${inputElem.id}-error`);
+    const errorElem = this._form.querySelector(`.${inputElem.id}-error`);
     inputElem.classList.add(this._inputErrorClass);
     errorElem.textContent = errorMessage;
     errorElem.classList.add(this._errorClass);
   };
 
   _hideInputError(inputElem) {
-    const errorElem = this._formSelector.querySelector(`.${inputElem.id}-error`);
+    const errorElem = this._form.querySelector(`.${inputElem.id}-error`);
     inputElem.classList.remove(this._inputErrorClass);
     errorElem.textContent = '';
     errorElem.classList.remove(this._errorClass);
@@ -68,13 +75,8 @@ class FormValidator {
   }
 
   enableValidation() {
-    this._inputList.forEach((inputElem) => {
-      inputElem.addEventListener('submit', (evt) => {
-        evt.preventDefault();
-      });
-      this._setEventListeners();
-    })
+    this._setEventListeners();
   }
-};
+  };
 
 export {data, FormValidator}
