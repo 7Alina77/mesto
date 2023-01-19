@@ -1,4 +1,4 @@
-class Card {
+export class Card {
   constructor(name, link, templateSelector, handleCardClick) {
     this._title = name;
     this._img = link;
@@ -12,7 +12,7 @@ class Card {
   }
   
   _getTemplate() {
-    const cardElement = document.querySelector(this._templateSelector)
+    const cardElement = this._templateSelector
     .content
     .querySelector('.elements__item')
     .cloneNode(true);
@@ -49,5 +49,3 @@ class Card {
     });
   }
 }
-
-export {Card};
