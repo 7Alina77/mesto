@@ -1,3 +1,5 @@
+import './index.css';
+
 import {profileElement,
 popupEditElement,
 popupAddElement,
