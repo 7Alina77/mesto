@@ -8,21 +8,9 @@ export class PopupWithImage extends Popup {
   }
 
   open(imageTitle, imageImg) {
-    super.open();
     this._popupImg.src = imageImg;
     this._popupImg.alt = imageTitle;
     this._popupTitle.textContent =imageTitle;
-  }
-
-  close() {
-    super.close();
-  }
-
-  _handleEscClose(evt) {
-    super._handleEscClose(evt);
-  }
-
-  setEventListeners() {
-    super.setEventListeners();
+    super.open();
   }
 }

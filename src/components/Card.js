@@ -32,7 +32,8 @@ export class Card {
   }
 
   _deleteCard() {
-    this._element.closest('.elements__item').remove();
+    this._element.remove();
+    this._element = null;
   }
 
   _setEventListeners() {

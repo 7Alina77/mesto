@@ -13,7 +13,6 @@ export class UserInfo {
   }
 
   setUserInfo(userData) {
-    this.getUserInfo(userData);
     this._name.textContent = userData.name;
     this._info.textContent = userData.about;
   }

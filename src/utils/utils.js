@@ -8,19 +8,13 @@ cardTemplateSelector} from '../utils/constants.js';
 
 export const handleCardClick = (imageTitle, imageImg) => {
   popupWithImage.open(imageTitle, imageImg);
-  popupWithImage.setEventListeners();
 };
 
 export const createCard = (item) => {
-  const card = new Card(item.place, item.link, cardTemplateSelector, handleCardClick);
+  const card = new Card(item.name, item.link, cardTemplateSelector, handleCardClick);
   const cardElement = card.generateCard();
   return cardElement;
 }
-
-export const prependCard = function(item) {
-  const cardElement = createCard(item);
-  cardsElement.prepend(cardElement);
-};
 
 export const handleEditProfileData = (userData) => {
   popupName.value = userData.name;
