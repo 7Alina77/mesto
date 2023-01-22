@@ -44,7 +44,7 @@ popupEditProfileForm.setEventListeners();
 const popupAddCardForm = new PopupWithForm('.popup_add-element', {
   handleSubmitForm: (formData) => {
     const cardElement = createCard(formData);
-    cardsElement.prepend(cardElement);
+    cardList.addNewCard(cardElement);
     popupAddCardForm.close();
   }
 })
