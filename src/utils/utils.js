@@ -17,6 +17,6 @@ export const createCard = (item) => {
 }
 
 export const handleEditProfileData = (userData) => {
-  popupName.value = userData.name;
+  popupName.value = userData.title;
   popupAbout.value = userData.info;
 };
