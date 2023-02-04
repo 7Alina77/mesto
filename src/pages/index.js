@@ -7,7 +7,9 @@ popupEditOpenBtn,
 profileName,
 profileAbout,
 popupAddForm,
-cardsElement} from "../utils/constants.js";
+cardsElement,
+url,
+token} from "../utils/constants.js";
 
 import {createCard,
 handleEditProfileData} from '../utils/utils.js'
@@ -18,6 +20,13 @@ import {Section} from '../components/Section.js';
 import { PopupWithImage } from '../components/PopupWithImage.js';
 import { UserInfo } from '../components/UserInfo.js';
 import { PopupWithForm } from '../components/PopupWithForm.js';
+import {Api} from '../components/Api.js';
+
+const api = new Api({url, token});
+api.getInitialCards();
+api.getUserInfo();
+api.patchProfile();
+api.postNewCard();
 
 export const popupWithImage = new PopupWithImage('.popup_image');
 popupWithImage.setEventListeners();
