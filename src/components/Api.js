@@ -16,7 +16,7 @@ export class Api {
     }
   }
 
-  getUserInfo() {
+  handleGetUserInfo() {
     return fetch(`${this._url}/users/me`, {
       headers: this._headers,
     })
@@ -31,7 +31,7 @@ export class Api {
   }
 
   patchProfile(name, about) {
-    fetch(`${this._url}/users/me`, {
+    return fetch(`${this._url}/users/me`, {
       method: 'PATCH',
       headers: this._headers,
       body: JSON.stringify({
@@ -43,7 +43,7 @@ export class Api {
   }
 
   postNewCard(name, link) {
-    fetch(`${this._url}/cards`, {
+    return fetch(`${this._url}/cards`, {
       method: 'POST',
       headers: this._headers,
       body: JSON.stringify({
@@ -54,8 +54,8 @@ export class Api {
     .then(this._checkResponse)
   }
 
-  deleteCard(id) {
-    fetch(`${this._url}/cards/${id}`, {
+  handleDeleteCard(id) {
+    return fetch(`${this._url}/cards/${id}`, {
       method: 'DELETE',
       headers: this._headers,
     })
@@ -63,7 +63,7 @@ export class Api {
   }
 
   likeCard(id) {
-    fetch(`${this._url}/cards/${id}/likes`, {
+    return fetch(`${this._url}/cards/${id}/likes`, {
       method: 'PUT',
       headers: this._headers,
     })
@@ -71,7 +71,7 @@ export class Api {
   }
 
   deleteLike(id)  {
-    fetch(`${this._url}/cards/${id}/likes`, {
+    return fetch(`${this._url}/cards/${id}/likes`, {
       method: 'DELETE',
       headers: this._headers,
     })
@@ -87,7 +87,7 @@ export class Api {
   }
 
   patchAvatar(avatar) {
-    fetch(`${this._url}/users/me/avatar`, {
+    return fetch(`${this._url}/users/me/avatar`, {
       method: 'PATCH',
       headers: this._headers,
       body: JSON.stringify({

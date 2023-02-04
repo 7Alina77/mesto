@@ -10,13 +10,23 @@ export const handleCardClick = (imageTitle, imageImg) => {
   popupWithImage.open(imageTitle, imageImg);
 };
 
-export const createCard = (item) => {
-  const card = new Card(item.name, item.link, cardTemplateSelector, handleCardClick);
+/**export const handleDeleteClick = (id) => {
+  card.deleteCard(id)
+};**/
+
+export const createCard = (data) => {
+  const card = new Card(data, cardTemplateSelector, handleCardClick/**, 
+    handleDeleteClick: (id) => {
+      handleDeleteCard(id) {
+      .then(() => {
+        card.deleteCard()
+      })
+  }**/);
   const cardElement = card.generateCard();
   return cardElement;
 }
 
-export const handleEditProfileData = (userData) => {
-  popupName.value = userData.title;
-  popupAbout.value = userData.info;
+export const handleEditProfileData = (res) => {
+  popupName.value = res.name;
+  popupAbout.value = res.about;
 };
