@@ -35,10 +35,14 @@ export const createCard = (data) => {
     }},
     {handleLikeClick: (res) => {
       const method = newCard.isCardLiked() ? api.deleteLike(res) :  api.addLike(res)
-        method.then((res) => {
-          newCard.toggleLike()
-          newCard.refreshLikeCount(res.likes.length)
-        })
+        method
+          .then((res) => {
+            newCard.toggleLike()
+            newCard.refreshLikeCount(res.likes.length)
+          })
+          .catch((err) => {
+            console.log(`Ошибка: ${err}`);
+          })
     }},
     userInfo.getUserInfo().id,
     )
