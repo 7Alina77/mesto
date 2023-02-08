@@ -62,7 +62,7 @@ export class Api {
     .then(this._checkResponse)
   }
 
-  likeCard(id) {
+  addLike(id) {
     return fetch(`${this._url}/cards/${id}/likes`, {
       method: 'PUT',
       headers: this._headers,
@@ -76,14 +76,6 @@ export class Api {
       headers: this._headers,
     })
     .then(this._checkResponse)
-  }
-
-  putLikeOnCard(id, isLiked) {
-    if(isLiked) {
-      this.deleteLike(id);
-    } else {
-      this.putLikeOnCard(id)
-    }
   }
 
   patchAvatar(avatar) {

@@ -18,15 +18,15 @@ import {createCard,
 handleEditProfileData,
 handleDeleteClick} from '../utils/utils.js'
 
-import {initialCards} from '../utils/cards.js';
 import {data, FormValidator} from '../components/FormValidator.js';
 import {Section} from '../components/Section.js';
 import { PopupWithImage } from '../components/PopupWithImage.js';
 import { UserInfo } from '../components/UserInfo.js';
 import { PopupWithForm } from '../components/PopupWithForm.js';
 import {Api} from '../components/Api.js';
+import { PopupWithConfirmation } from '../components/PopupWithConfirmation';
 
-const api = new Api({url, token});
+export const api = new Api({url, token});
 
 const cardList = new Section({
   renderer: (data) => {
@@ -65,8 +65,12 @@ const popupEditProfileForm = new PopupWithForm('.popup_edit', {
 });
 popupEditProfileForm.setEventListeners();
 
+export const popupWithConfirmation = new PopupWithConfirmation('.popup_confirmation');
+popupWithConfirmation.setEventListeners();
+
 const popupEditAvatar = new PopupWithForm('.popup_avatar', {
   handleSubmitForm: (userData) => {
+    popupEditAvatar.isLoading(true, "Сохранение...");
     api.patchAvatar(userData.avatar)
       .then((data) => {
         userInfo.setUserInfo(data);
@@ -75,7 +79,10 @@ const popupEditAvatar = new PopupWithForm('.popup_avatar', {
         popupEditAvatar.close();
       })
       .catch((err) => {
-        console.log(`Ошибка: ${err}`)
+        console.log(`Ошибка обновления аватара: ${err}`)
+      })
+      .finally(() => {
+        popupEditAvatar.isLoading(false, "Сохранить")
       })
   }
 })
@@ -83,6 +90,7 @@ popupEditAvatar.setEventListeners();
 
 const popupAddCardForm = new PopupWithForm('.popup_add-element', {
   handleSubmitForm: (formData) => {
+    popupAddCardForm.isLoading(true, "Сохранение...");
     api.postNewCard(formData.name, formData.link)
       .then((res) => {
         const cardElement = createCard(res);
@@ -91,6 +99,9 @@ const popupAddCardForm = new PopupWithForm('.popup_add-element', {
       })
       .catch((err) => {
         console.log(`Ошибка создания новой карточки: ${err}`)
+      })
+      .finally(() => {
+        popupAddCardForm.isLoading(false, "Сохранить")
       })
   }
 })

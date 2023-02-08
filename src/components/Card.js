@@ -1,5 +1,6 @@
 export class Card {
-  constructor(data, templateSelector,userId ,handleCardClick, handleDeleteClick) {
+  constructor(data, templateSelector ,handleCardClick, {handleDeleteClick}, {handleLikeClick}, userId) {
+    this._data = data,
     this._title = data.name;
     this._img = data.link;
     this._cardId = data._id;
@@ -10,6 +11,7 @@ export class Card {
     this._templateSelector = templateSelector;
     this._handleCardClick = handleCardClick;
     this._handleDeleteClick = handleDeleteClick;
+    this._handleLikeClick = handleLikeClick;
     this._element = this._getTemplate();
     this._cardImg = this._element.querySelector('.elements__image');
     this._cardTitle = this._element.querySelector('.elements__title');
@@ -17,19 +19,27 @@ export class Card {
     this._cardLikeCount = this._element.querySelector('.elements__like-count');
     this._cardTrash = this._element.querySelector('.elements__trash');
   }
-  
+
+  setListeners() {
+    if(this._userId !== this._owner._id) {
+      this._cardTrash.remove()
+    };
+
+    if(this.isCardLiked()) {
+      this.addLike();
+    } 
+  }
+
+  isCardLiked () {
+    return this._likes.find(user => user._id === this._userId)
+  }
+
   _getTemplate() {
     const cardElement = this._templateSelector
     .content
     .querySelector('.elements__item')
     .cloneNode(true);
     return cardElement;
-  }
-
-  setListeners() {
-    if(this._userId !== this._owner._id) {
-      this._cardTrash.remove()
-    };
   }
 
   generateCard() {
@@ -42,8 +52,18 @@ export class Card {
     return this._element;
   }
 
-  _toggleLike() {
+  addLike() {
+    this._cardLike.classList.add('elements__like_active');
+    this._cardLikeCount.textContent = this._likesLength;
+  }
+
+  toggleLike() {
     this._cardLike.classList.toggle('elements__like_active');
+  }
+
+  refreshLikeCount (likes) {
+    this._newLikesLength = likes;
+    this._cardLikeCount.textContent = this._newLikesLength;
   }
 
   deleteCard() {
@@ -53,11 +73,11 @@ export class Card {
 
   _setEventListeners() {
     this._cardLike.addEventListener('click', () => {
-      this._toggleLike();
+      this._handleLikeClick(this._cardId);
     });
 
     this._cardTrash.addEventListener('click', () => {
-      this._handleDeleteClick(this._id);
+      this._handleDeleteClick(this._data);
     });
 
     this._cardImg.addEventListener('click', () => {
