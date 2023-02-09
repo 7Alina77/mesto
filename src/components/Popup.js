@@ -1,15 +1,8 @@
 export class Popup {
   constructor(popupSelector) {
     this._popup = document.querySelector(popupSelector);
-    this._form = this._popup.querySelector('.popup__form');
-    this._saveBtn = this._popup.querySelector('.popup__save');
     this._popupCloseBtn = this._popup.querySelector('.popup__close');
     this._handleEscClose = this._handleEscClose.bind(this);
-  }
-
-  isLoading(loading, text) {
-    this._saveBtn.disabled = loading;
-    this._saveBtn.textContent = text;
   }
 
   open () {

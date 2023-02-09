@@ -10,11 +10,11 @@ export class Section {
     });
   }
 
-  addItem (item) {
+  appenItem (item) {
     this._container.append(item);
   }
 
-  addNewCard (item) {
+  prependItem (item) {
     this._container.prepend(item);
   }
 }

@@ -62,13 +62,6 @@ export class Api {
     .then(this._checkResponse)
   }
 
-  refreshLikes(id) {
-    return fetch(`${this._url}/cards/${id}`, {
-      headers: this._headers,
-    })
-    .then(this._checkResponse)
-  }
-
   addLike(id) {
     return fetch(`${this._url}/cards/${id}/likes`, {
       method: 'PUT',

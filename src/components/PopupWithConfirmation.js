@@ -11,7 +11,7 @@ export class PopupWithConfirmation extends Popup {
     this._card = card;
   }
   
-  newMethodDelete(newDelete) {
+  setCallback(newDelete) {
     this._newMethod = newDelete;
   }
 

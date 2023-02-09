@@ -12,7 +12,6 @@ export const profileAbout = profileElement.querySelector('.profile__about');
 export const profileAvatar = profileElement.querySelector('.profile__avatar');
 export const popupForm = popupAddElement.querySelector('.popup__form-add');
 export const cardsElement = document.querySelector('.elements');
-export const popupImageElement = document.querySelector('.popup_image');
 export const cardTemplateSelector = cardsElement.querySelector('.card-template');
 export const token = '96da67be-193e-4896-a588-48f1d36951e6';
 export const url = 'https://mesto.nomoreparties.co/v1/cohort-59';

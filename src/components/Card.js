@@ -31,7 +31,7 @@ export class Card {
   }
 
   isCardLiked () {
-    return this._likes.find(user => user._id === this._userId)
+    return this._likes.some(user => user._id === this._userId)
   }
 
   _getTemplate() {
@@ -62,7 +62,7 @@ export class Card {
   }
 
   refreshLikeCount (likes) {
-    this._newLikesLength = likes;
+    this._newLikesLength = likes.length;
     this._cardLikeCount.textContent = this._newLikesLength;
   }
 
