@@ -1,6 +1,10 @@
 import './index.css';
 
-import {popupName,
+import {popupEditSaveBtn,
+popupAddSaveBtn,
+popupEditAvatarSaveBtn,
+popupConfirmationSaveBtn,
+popupName,
 popupAbout,
 popupEditElement,
 popupAddElement,
@@ -18,7 +22,7 @@ url,
 token} from "../utils/constants.js";
 
 import {Card} from '../components/Card.js';
-import {data, FormValidator} from '../components/FormValidator.js';
+import {validationConfig, FormValidator} from '../components/FormValidator.js';
 import {Section} from '../components/Section.js';
 import { PopupWithImage } from '../components/PopupWithImage.js';
 import { UserInfo } from '../components/UserInfo.js';
@@ -30,10 +34,6 @@ export const api = new Api({url, token});
 
 export const userInfo = new UserInfo(profileName, profileAbout, profileAvatar);
 
-export const handleCardClick = (imageTitle, imageImg) => {
-  popupWithImage.open(imageTitle, imageImg);
-};
-
 export const createCard = (data) => {
   const newCard = new Card(
     data, 
@@ -42,7 +42,7 @@ export const createCard = (data) => {
     {handleDeleteClick: (card) => {
       popupWithConfirmation.open(card);
       popupWithConfirmation.setCallback(() => {
-        popupWithConfirmation.isLoading(true, "Сохранение...");
+        isLoadingPopup(popupConfirmationSaveBtn, true, "Сохранение...");
         api.handleDeleteCard(card._id)
           .then(() => {
             newCard.deleteCard()
@@ -52,7 +52,7 @@ export const createCard = (data) => {
             console.log(`Ошибка: ${err}`);
           })
           .finally(() => {
-            popupWithConfirmation.isLoading(false, "Сохранено")
+            isLoadingPopup(popupConfirmationSaveBtn, false, "Сохранено");
           })
       });
     }},
@@ -73,11 +73,6 @@ export const createCard = (data) => {
   return cardElement;
 }
 
-export const handleEditProfileData = (res) => {
-  popupName.value = res.name;
-  popupAbout.value = res.about;
-};
-
 const cardsSection = new Section({
   renderer: (data) => {
     const cardElement = createCard(data);
@@ -95,11 +90,10 @@ Promise.all([api.handleGetUserInfo(), api.getInitialCards()])
   });
 
 export const popupWithImage = new PopupWithImage('.popup_image');
-popupWithImage.setEventListeners();
 
 const popupEditProfileForm = new PopupWithForm('.popup_edit', {
   handleSubmitForm: (userData) => {
-    popupEditProfileForm.isLoading(true, "Сохранение...");
+    isLoadingPopup(popupEditSaveBtn, true, "Сохранение...");
     api.patchProfile(userData.title, userData.about)
       .then((data) => {
         userInfo.setUserInfo(data);
@@ -109,18 +103,16 @@ const popupEditProfileForm = new PopupWithForm('.popup_edit', {
         console.log(`Ошибка: ${err}`)
       })
       .finally(() => {
-        popupEditProfileForm.isLoading(false, "Сохранено")
+        isLoadingPopup(popupEditSaveBtn, false, "Сохранено");
       })
   }
 });
-popupEditProfileForm.setEventListeners();
 
 export const popupWithConfirmation = new PopupWithConfirmation('.popup_confirmation');
-popupWithConfirmation.setEventListeners();
 
 const popupEditAvatar = new PopupWithForm('.popup_avatar', {
   handleSubmitForm: (userData) => {
-    popupEditAvatar.isLoading(true, "Сохранение...");
+    isLoadingPopup(popupEditAvatarSaveBtn, true, "Сохранение...");
     api.patchAvatar(userData.avatar)
       .then((data) => {
         userInfo.setUserInfo(data);
@@ -132,15 +124,14 @@ const popupEditAvatar = new PopupWithForm('.popup_avatar', {
         console.log(`Ошибка обновления аватара: ${err}`)
       })
       .finally(() => {
-        popupEditAvatar.isLoading(false, "Сохранено")
+        isLoadingPopup(popupEditAvatarSaveBtn, false, "Сохранено");
       })
   }
 })
-popupEditAvatar.setEventListeners();
 
 const popupAddCardForm = new PopupWithForm('.popup_add-element', {
   handleSubmitForm: (formData) => {
-    popupAddCardForm.isLoading(true, "Сохранение...");
+    isLoadingPopup(popupAddSaveBtn, true, "Сохранение...");
     api.postNewCard(formData.name, formData.link)
       .then((res) => {
         const cardElement = createCard(res);
@@ -151,21 +142,44 @@ const popupAddCardForm = new PopupWithForm('.popup_add-element', {
         console.log(`Ошибка создания новой карточки: ${err}`)
       })
       .finally(() => {
-        popupAddCardForm.isLoading(false, "Сохранено")
+        isLoadingPopup(popupAddSaveBtn, false, "Сохранено");
       })
   }
 })
+
+const formEditValidation = new FormValidator(validationConfig, popupEditElement);
+const formEditAvatarValidation = new FormValidator(validationConfig, popupEditAvatarElement);
+const formAddValidation = new FormValidator(validationConfig, popupAddElement);
+
+export const handleCardClick = (imageTitle, imageImg) => {
+  popupWithImage.open(imageTitle, imageImg);
+};
+
+export const isLoadingPopup = (button, loading, text) => {
+  button.disabled = loading;
+  button.textContent = text;
+}
+
+export const handleEditProfileData = (profileInfo) => {
+  popupName.value = profileInfo.title;
+  popupAbout.value = profileInfo.info;
+};
+
+popupEditProfileForm.setEventListeners();
+popupWithImage.setEventListeners();
+popupWithConfirmation.setEventListeners();
+popupEditAvatar.setEventListeners();
 popupAddCardForm.setEventListeners();
+
+formEditValidation.enableValidation();
+formEditAvatarValidation.enableValidation();
+formAddValidation.enableValidation();
 
 popupEditOpenBtn.addEventListener('click', function() {
   formEditValidation.resetValidation();
   popupEditProfileForm.open();
-  //const userProfileInfo = userInfo.getUserInfo();
-  //popupEditProfileForm.setInputValuesInForm(userProfileInfo)
-  api.handleGetUserInfo()
-    .then((res) => {
-      handleEditProfileData(res)
-    })
+  const userProfileInfo = userInfo.getUserInfo();
+  handleEditProfileData(userProfileInfo);
 });
 
 popupEditAvatarBtn.addEventListener('click', function () {
@@ -181,12 +195,3 @@ popupAddOpenBtn.addEventListener('click', function() {
   formAddValidation.toggleBtnState();
   popupAddCardForm.open();
 });
-
-const formEditValidation = new FormValidator(data, popupEditElement);
-formEditValidation.enableValidation();
-
-const formEditAvatarValidation = new FormValidator(data, popupEditAvatarElement);
-formEditAvatarValidation.enableValidation();
-
-const formAddValidation = new FormValidator(data, popupAddElement);
-formAddValidation.enableValidation();

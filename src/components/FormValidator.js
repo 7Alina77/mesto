@@ -1,19 +1,12 @@
-const data = {
-  formSelector: '.popup__form',
-  inputSelector: '.popup__input',
-  submitButtonSelector: '.popup__save',
-  inactiveButtonClass: 'popup__save_disabled',
-  inputErrorClass: 'popup__input_type_error',
-  errorClass: 'popup__input-error_visible'
-};
+import { validationConfig } from "../utils/constants";
 
 class FormValidator {
-  constructor(data, form) {
-    this._inputSelector = data.inputSelector;
-    this._submitButtonSelector = data.submitButtonSelector;
-    this._inactiveButtonClass = data.inactiveButtonClass;
-    this._inputErrorClass = data.inputErrorClass;
-    this._errorClass = data.errorClass;
+  constructor(validationConfig, form) {
+    this._inputSelector = validationConfig.inputSelector;
+    this._submitButtonSelector = validationConfig.submitButtonSelector;
+    this._inactiveButtonClass = validationConfig.inactiveButtonClass;
+    this._inputErrorClass = validationConfig.inputErrorClass;
+    this._errorClass = validationConfig.errorClass;
     this._form = form;
     this._btnElem = this._form.querySelector(this._submitButtonSelector);
     this._inputList = Array.from(this._form.querySelectorAll(this._inputSelector));
@@ -33,12 +26,12 @@ class FormValidator {
   }
 
   toggleBtnState() {
-    if(this._hasInvalidInput(this._inputList)) {
+    if(this._hasInvalidInput()) {
       this._btnElem.classList.add(this._inactiveButtonClass);
-      this._btnElem.setAttribute('disabled', 'disabled');
+      this._btnElem.disabled = 'disabled';
     } else {
       this._btnElem.classList.remove(this._inactiveButtonClass);
-      this._btnElem.removeAttribute('disabled', 'disabled');
+      this._btnElem.removeAttribute('disabled');
     }
   }
 
@@ -79,4 +72,4 @@ class FormValidator {
   }
   };
 
-export {data, FormValidator}
+export {validationConfig, FormValidator}

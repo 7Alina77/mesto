@@ -20,9 +20,10 @@ export class Card {
     this._cardTrash = this._element.querySelector('.elements__trash');
   }
 
-  setListeners() {
+  checkButtonsInitialState() {
     if(this._userId !== this._owner._id) {
-      this._cardTrash.remove()
+      this._cardTrash.remove();
+      this._cardTrash = null;
     };
 
     if(this.isCardLiked()) {
@@ -48,7 +49,7 @@ export class Card {
     this._cardImg.alt = this._title;
     this._cardTitle.textContent = this._title;
     this._cardLikeCount.textContent = this._likesLength;
-    this.setListeners();
+    this.checkButtonsInitialState();
     return this._element;
   }
 

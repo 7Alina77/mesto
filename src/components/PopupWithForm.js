@@ -9,24 +9,12 @@ export class PopupWithForm extends Popup {
     this.handleSubmitForm = handleSubmitForm;
   }
 
-  isLoading(loading, text) {
-    this._saveBtn.disabled = loading;
-    this._saveBtn.textContent = text;
-  }
-
   getInputValues() {
     this._formValues = {};
     this._inputList.forEach((input) => {
       this._formValues[input.name] = input.value;
     });
     return this._formValues;
-  }
-
-  setInputValuesInForm(inputValues) {
-    this._inputValues = inputValues;
-    this._inputs = this.getInputValues();
-    console.log(this._inputs)
-    this._inputs.title = this._inputValues.title.textContent
   }
 
   setEventListeners() {
