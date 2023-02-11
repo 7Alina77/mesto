@@ -63,6 +63,7 @@ export class Card {
   }
 
   refreshLikeCount (likes) {
+    this._likes = likes;
     this._newLikesLength = likes.length;
     this._cardLikeCount.textContent = this._newLikesLength;
   }
